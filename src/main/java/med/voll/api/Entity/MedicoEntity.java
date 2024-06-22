@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import med.voll.api.dto.DireccionDto;
 import med.voll.api.dto.Especialidad;
+import med.voll.api.dto.MedicoDto;
 
 @Entity(name= "Medico")
 @Table(name= "medicos")
@@ -19,9 +20,18 @@ public class MedicoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nombre;
+    private String email;
     private String documento;
     @Enumerated(EnumType.STRING)
-    private Especialidad especialidades;
+    private Especialidad especialidad;
     @Embedded
-    private DireccionDto direccion;
+    private DireccionEntity direccion;
+
+    public MedicoEntity(MedicoDto medicoDto) {
+        this.nombre = medicoDto.nombre();
+        this.email = medicoDto.email();
+        this.documento = medicoDto.documento();
+        this.especialidad = medicoDto.especialidad();
+        this.direccion = new DireccionEntity(medicoDto.direccion());
+    }
 }
