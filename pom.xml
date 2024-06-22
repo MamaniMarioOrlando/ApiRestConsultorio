@@ -88,6 +88,25 @@
 					</excludes>
 				</configuration>
 			</plugin>
+
+			<!-- Plugin de Flyway -->
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>10.10.0</version> <!-- Versión específica de Flyway -->
+				<configuration>
+					<url>jdbc:mysql://localhost:3306/consultorio_db</url> <!-- URL de tu base de datos -->
+					<user>root</user> <!-- Usuario de la base de datos -->
+					<password>manager123</password> <!-- Contraseña de la base de datos -->
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>8.0.28</version> <!-- Versión del conector de MySQL -->
+					</dependency>
+				</dependencies>
+			</plugin>
 		</plugins>
 	</build>
 
