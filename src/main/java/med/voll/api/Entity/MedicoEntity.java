@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import med.voll.api.dto.ActualizarMedicoDto;
 import med.voll.api.dto.DireccionDto;
 import med.voll.api.dto.Especialidad;
 import med.voll.api.dto.MedicoDto;
@@ -35,5 +36,18 @@ public class MedicoEntity {
         this.documento = medicoDto.documento();
         this.especialidad = medicoDto.especialidad();
         this.direccion = new DireccionEntity(medicoDto.direccion());
+    }
+
+    public void actualizarDatosMedico(ActualizarMedicoDto actualizarMedicoDto){
+
+        if(actualizarMedicoDto.nombre() != null){
+            this.nombre = actualizarMedicoDto.nombre();
+        }
+        if(actualizarMedicoDto.documento() != null){
+            this.documento = actualizarMedicoDto.documento();
+        }
+        if(actualizarMedicoDto.direccionDto() != null){
+            this.direccion = direccion.actualizarDatosDireccion(actualizarMedicoDto.direccionDto());
+        }
     }
 }
