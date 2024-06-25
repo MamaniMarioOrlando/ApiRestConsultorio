@@ -24,6 +24,7 @@ public class MedicoEntity {
     private String email;
     private String telefono;
     private String documento;
+    private Boolean estado;
     @Enumerated(EnumType.STRING)
     private Especialidad especialidad;
     @Embedded
@@ -34,6 +35,7 @@ public class MedicoEntity {
         this.email = medicoDto.email();
         this.telefono = medicoDto.telefono();
         this.documento = medicoDto.documento();
+        this.estado = true;
         this.especialidad = medicoDto.especialidad();
         this.direccion = new DireccionEntity(medicoDto.direccion());
     }
@@ -49,5 +51,8 @@ public class MedicoEntity {
         if(actualizarMedicoDto.direccionDto() != null){
             this.direccion = direccion.actualizarDatosDireccion(actualizarMedicoDto.direccionDto());
         }
+    }
+    public void estadoFalse(){
+        this.estado= false;
     }
 }
